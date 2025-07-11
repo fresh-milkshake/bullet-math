@@ -15,7 +15,7 @@ Download the latest release from the [Releases page](https://github.com/fresh-mi
 ### Building from source
 
 ```bash
-git clone https://github.com/fresh-milkshake/bullet-math.git
+git clone https://github.com/fresh-milkshake/bullet-math
 cd bullet-math
 flutter pub get
 flutter pub run flutter_launcher_icons:main
@@ -26,4 +26,4 @@ Resulting apk will be in `build/app/outputs/flutter-apk/app-release.apk`.
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE.txt](LICENSE.txt) file for details.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE.txt) file for details.
