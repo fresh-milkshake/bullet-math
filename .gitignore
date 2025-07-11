@@ -1,0 +1,130 @@
+# Miscellaneous
+*.class
+*.db
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.buildlog/
+.history
+.svn/
+.vscode/
+migrate_working_dir/
+
+# Flutter/Dart/Pub related
+**/doc/api/
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+build/
+flutter_*.log
+lib/generated_plugin_registrant.dart
+mipmap*
+
+# Obfuscation related
+app.*.map.json
+
+# Platform-specific directories
+# /android/
+/ios/
+# /windows/
+# /linux/
+# /macos/
+# /web/
+
+# IntelliJ
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Generated files
+*.g.dart
+*.freezed.dart
+*.keys.dart
+
+# Build files
+/android/app/build/
+/android/.gradle/
+/android/app/debug
+/android/app/profile
+/android/app/release
+
+# Keystore files
+*.jks
+*.keystore
+key.properties
+
+# iOS build files
+/ios/build/
+/ios/Pods/
+/ios/Flutter/App.framework
+/ios/Flutter/engine.a
+/ios/Flutter/flutter_assets/
+/ios/Flutter/.last_build_id
+/ios/Runner/GeneratedPluginRegistrant.*
+ios/Flutter/Generated.xcconfig
+ios/Runner.xcworkspace/
+!/ios/Runner.xcworkspace/contents.xcworkspacedata
+
+# Swift Package Manager
+/ios/.swiftpm/
+/ios/Packages/
+/ios/Runner.xcodeproj/project.xcworkspace/
+/ios/Runner.xcodeproj/xcuserdata/
+!/ios/Runner.xcodeproj/project.xcworkspace/contents.xcworkspacedata
+
+# macOS build files
+/macos/build/
+/macos/Pods/
+/macos/Flutter/ephemeral/
+/macos/Flutter/Generated.xcconfig
+/macos/Flutter/.last_build_id
+/macos/Runner.xcworkspace/
+!/macos/Runner.xcworkspace/contents.xcworkspacedata
+/macos/Runner.xcodeproj/project.xcworkspace/
+/macos/Runner.xcodeproj/xcuserdata/
+
+# Linux build files
+/linux/build/
+/linux/flutter/ephemeral/
+/linux/.last_build_id
+
+# Windows build files
+/windows/build/
+/windows/flutter/ephemeral/
+/windows/.last_build_id
+
+# Web build files
+/web/build/
+
+# Coverage reports
+coverage/
+*.lcov
+
+# Test files
+test/.test_coverage.dart
+test_driver/
+
+# Firebase
+.firebase/
+firebase_options.dart
+
+# Temporary files
+*.tmp
+*.temp
+*~
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
