@@ -6,6 +6,11 @@
 
 An application with endless simple math problems to occupy your brain.
 
+<p>
+    <img src="assets/screenshot-1.jpg" width="250" />
+    <img src="assets/screenshot-2.jpg" width="250" />
+</p>
+
 ## Installation
 
 ### From Releases page
