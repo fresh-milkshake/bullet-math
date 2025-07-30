@@ -218,7 +218,13 @@ class _MathScreenState extends State<MathScreen>
             ),
             child: Column(
               children: [
-                Text(_activeProblem.questionText, style: AppTextStyles.questionText, textAlign: TextAlign.center),
+                Text(
+                  _isShowingResult && !_isAnswerCorrect 
+                    ? '${_activeProblem.firstOperand} ${_activeProblem.operation.symbol} ${_activeProblem.secondOperand} = ${_activeProblem.correctAnswer}'
+                    : _activeProblem.questionText,
+                  style: AppTextStyles.questionText, 
+                  textAlign: TextAlign.center
+                ),
                 const SizedBox(height: 24),
                 _InteractiveAnswerInput(
                   userAnswer: _userInput,
@@ -226,17 +232,6 @@ class _MathScreenState extends State<MathScreen>
                   isCorrect: _isAnswerCorrect,
                   correctAnswer: _activeProblem.correctAnswer,
                 ),
-                if (_isShowingResult && !_isAnswerCorrect) ...[
-                  const SizedBox(height: AppSizes.paddingMedium),
-                  Text(
-                    '${_activeProblem.correctAnswer}',
-                    style: const TextStyle(
-                      fontSize: 24,
-                      color: AppColors.success,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ],
               ],
             ),
           ),
@@ -248,12 +243,14 @@ class _MathScreenState extends State<MathScreen>
   Widget _buildSkipButton() {
     return SizedBox(
       height: AppSizes.buttonHeight,
-      child: AnimatedOpacity(
-        opacity: _isShowingResult ? 0.5 : 1.0,
-        duration: AppDurations.normal,
-        child: _InteractiveSkipButton(
-          onPressed: _isShowingResult ? null : _skipCurrentProblem,
-          enabled: !_isShowingResult,
+      child: Center(
+        child: SizedBox(
+          width: 120,
+          height: 40,
+          child: _InteractiveSkipButton(
+            onPressed: _isShowingResult ? null : _skipCurrentProblem,
+            enabled: !_isShowingResult,
+          ),
         ),
       ),
     );
@@ -291,9 +288,9 @@ class _InteractiveSkipButtonState extends State<_InteractiveSkipButton> {
       return AppColors.backgroundDark;
     }
     if (_isHovered) {
-      return AppColors.surfaceDark;
+      return AppColors.accent.withOpacity(0.2);
     }
-    return AppColors.backgroundDark;
+    return AppColors.accent.withOpacity(0.1);
   }
 
   Color get _textColor {
@@ -301,9 +298,9 @@ class _InteractiveSkipButtonState extends State<_InteractiveSkipButton> {
       return AppColors.textTertiary;
     }
     if (_isHovered) {
-      return AppColors.textSecondary;
+      return AppColors.accent;
     }
-    return AppColors.textTertiary;
+    return AppColors.accent.withOpacity(0.8);
   }
 
   @override
@@ -313,9 +310,7 @@ class _InteractiveSkipButtonState extends State<_InteractiveSkipButton> {
       onExit: widget.enabled ? (_) => setState(() => _isHovered = false) : null,
       child: GestureDetector(
         onTap: widget.onPressed,
-        child: AnimatedContainer(
-          duration: AppDurations.normal,
-          curve: Curves.easeOut,
+        child: Container(
           width: double.infinity,
           height: AppSizes.buttonHeight,
           decoration: BoxDecoration(
@@ -331,16 +326,14 @@ class _InteractiveSkipButtonState extends State<_InteractiveSkipButton> {
                 color: _textColor,
               ),
               const SizedBox(width: 8),
-              AnimatedDefaultTextStyle(
-                duration: AppDurations.normal,
-                curve: Curves.easeOut,
+              Text(
+                'SKIP',
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w500,
                   letterSpacing: 1,
                   color: _textColor,
                 ),
-                child: const Text('SKIP'),
               ),
             ],
           ),
@@ -410,6 +403,7 @@ class _InteractiveAnswerInputState extends State<_InteractiveAnswerInput> {
         duration: AppDurations.normal,
         curve: Curves.easeOut,
         width: double.infinity,
+        height: 80, // Фиксированная высота поля ввода
         padding: const EdgeInsets.symmetric(
           horizontal: AppSizes.paddingXLarge,
           vertical: AppSizes.paddingMedium,

@@ -110,9 +110,9 @@ class NumberInputPad extends StatelessWidget {
           height: AppSizes.numpadButtonHeight,
           child: _InteractiveButton(
             onTap: () => onNumberInput(number),
-            backgroundColor: AppColors.backgroundDark,
-            hoverColor: AppColors.surfaceDark,
-            pressedColor: AppColors.surfaceLight,
+            backgroundColor: AppColors.surfaceDark,
+            hoverColor: AppColors.surfaceLight,
+            pressedColor: AppColors.borderGray,
             child: Center(
               child: Text(number, style: AppTextStyles.numpadText),
             ),
@@ -195,21 +195,25 @@ class _InteractiveButtonState extends State<_InteractiveButton> {
     return MouseRegion(
       onEnter: (_) => setState(() => _isHovered = true),
       onExit: (_) => setState(() => _isHovered = false),
-      child: GestureDetector(
-        onTapDown: (_) => setState(() => _isPressed = true),
-        onTapUp: (_) => setState(() => _isPressed = false),
-        onTapCancel: () => setState(() => _isPressed = false),
-        onTap: widget.onTap,
-        child: AnimatedContainer(
-          duration: AppDurations.fast,
-          curve: Curves.easeOut,
-          width: double.infinity,
-          height: double.infinity,
-          decoration: BoxDecoration(
-            color: _currentColor,
-            borderRadius: BorderRadius.circular(AppSizes.borderRadiusSmall),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: widget.onTap,
+          onTapDown: (_) => setState(() => _isPressed = true),
+          onTapUp: (_) => setState(() => _isPressed = false),
+          onTapCancel: () => setState(() => _isPressed = false),
+          borderRadius: BorderRadius.circular(AppSizes.borderRadiusSmall),
+          splashColor: AppColors.accent.withOpacity(0.3),
+          highlightColor: AppColors.accent.withOpacity(0.1),
+          child: Container(
+            width: double.infinity,
+            height: double.infinity,
+            decoration: BoxDecoration(
+              color: _currentColor,
+              borderRadius: BorderRadius.circular(AppSizes.borderRadiusSmall),
+            ),
+            child: widget.child,
           ),
-          child: widget.child,
         ),
       ),
     );
